@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:spring="http://www.springframework.org/tags">
+
+    <jsp:directive.page pageEncoding="UTF-8" contentType="text/html;charset UTF-8"/>
+
+    <body>
+        <div class="col-sm-12 error"><spring:message code="error"/></div>
+
+        <div style="text-align: center">
+          <a href="${pageContext.request.contextPath}/homePage" class="buttonRefer"><spring:message code="orders.refer.otherOrder"/></a>
+        </div>
+    </body>
+</html>

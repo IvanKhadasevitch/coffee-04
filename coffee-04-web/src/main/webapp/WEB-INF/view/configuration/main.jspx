@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:spring="http://www.springframework.org/tags">
+
+    <div class="col-sm-12 tableHeader">
+        <i class="glyphicon glyphicon-wrench"><jsp:text/></i><spring:message code="configuration.title"/>
+    </div>
+
+    <c:set var="placeholderFreeCup"><spring:message code="configuration.placeholder.freeCup"/></c:set>
+    <c:set var="placeholderFreeDelivery"><spring:message code="configuration.placeholder.freeDelivery"/></c:set>
+    <c:set var="placeholderDeliveryPrice"><spring:message code="configuration.placeholder.deliveryPrice"/></c:set>
+    <c:url var="formUrl" value="/configuration/page" />
+    <form class="form-horizontal" action="${formUrl}" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="freeCup"><spring:message code="configuration.freeCup"/>:</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="freeCup" name="freeCup"
+                       placeholder="${placeholderFreeCup}"
+                       value="${sessionScope.freeCup}"
+                       min="1" step="1"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="freeDelivery"><spring:message code="configuration.freeDelivery"/>:</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="freeDelivery" name="freeDelivery"
+                       placeholder="${placeholderFreeDelivery}"
+                       value="${sessionScope.freeDelivery}"
+                       min="0" step="0.01"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-6" for="deliveryPrice"><spring:message code="configuration.deliveryPrice"/>:</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="deliveryPrice" name="deliveryPrice"
+                       placeholder="${placeholderDeliveryPrice}"
+                       value="${sessionScope.deliveryPrice}"
+                       min="0" step="0.01"/>
+            </div>
+        </div>
+        <div class="input-group col-sm-offset-4 col-sm-1">
+            <button type="submit" class="btn btn-success"><spring:message code="configuration.submit"/></button>
+        </div>
+    </form>
+
+</html>

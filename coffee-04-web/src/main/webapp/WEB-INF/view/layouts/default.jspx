@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:u="urn:jsptagdir:/WEB-INF/tags/utils"
+      xmlns:com="urn:jsptagdir:/WEB-INF/tags/common"
+      xmlns:spring="http://www.springframework.org/tags"
+      xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <jsp:output doctype-public="-//W3C//DTD XHTML 1.1//EN"
+            doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+            doctype-root-element="html" omit-xml-declaration="false"/>
+    <jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
+
+    <head>
+      <![CDATA[
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/style.css" type="text/css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <script src="${pageContext.request.contextPath}/assests/js/utils.js" type="text/javascript"><jsp:text/></script>
+      ]]>
+
+      <style>
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+      </style>
+      <title><spring:message code="${requestScope.currentTitle}"/></title>
+      <u:icon file="tea.png"/>
+    </head>
+
+    <body>
+        <com:header-navigation/>
+
+        <div class="jumbotron">
+            <div class="container text-center top-buffer">
+                 <tiles:insertAttribute name="body"/>
+            </div>
+        </div>
+
+        <tiles:insertAttribute name="footer"/>
+    </body>
+
+</html>

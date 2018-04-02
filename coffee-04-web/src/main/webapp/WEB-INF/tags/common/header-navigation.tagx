@@ -1,0 +1,68 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:spring="http://www.springframework.org/tags"
+          version="2.0" >
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!--A navigation bar is a navigation header that is placed at the top of the page:-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"><jsp:text/></span>
+                    <span class="icon-bar"><jsp:text/></span>
+                    <span class="icon-bar"><jsp:text/></span>
+                    <span class="icon-bar"><jsp:text/></span>
+                </button>
+                <!--set brand name in navigation header-->
+                <a class="navbar-brand" href="#"><spring:message code="header.brand"/></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <!--set Orders/Заказы in navigation header-->
+                    <c:set var="navName"><spring:message code="orders.title"/></c:set>
+                    <c:choose>
+                        <c:when test="${requestScope.currentPageName eq 'orders'}">
+                            <!--page Orders - nothing refer-->
+                            <li class="active"><a href="#">${navName}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <!--page not Orders - refer to Orders page-->
+                            <li><a href="${pageContext.request.contextPath}//homePage">${navName}</a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <!--set Coffee/Ассортимент in navigation header-->
+                    <c:choose>
+                        <c:when test="${requestScope.currentPageName eq 'coffee'}">
+                            <!--page Coffee - nothing refer-->
+                            <li class="active"><a href="#"><spring:message code="coffee.title"/></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <!--page not Coffee - refer to Coffee page-->
+                            <li><a href="${pageContext.request.contextPath}/coffee/page"><spring:message code="coffee.title"/></a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <!--set Configuration/Конфигурация in navigation header-->
+                    <c:choose>
+                        <c:when test="${requestScope.currentPageName eq 'configuration'}">
+                            <!--page Configuration - nothing refer-->
+                            <li class="active"><a href="#"><spring:message code="configuration.title"/></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <!--page not Configuration - refer to Configuration page-->
+                            <li><a href="${pageContext.request.contextPath}/configuration/page"><spring:message code="configuration.title"/></a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <!--set Ru and En in navigation header-->
+                    <li><a href="?locale=en"><spring:message code="header.locale.en"/></a></li>
+                    <li><a href="?locale=ru"><spring:message code="header.locale.ru"/></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</jsp:root>

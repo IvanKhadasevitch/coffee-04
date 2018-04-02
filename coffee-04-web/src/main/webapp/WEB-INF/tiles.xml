@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <!--общий Tiles шаблон для всех jspx страниц отображения. Все страницы
+        будут формироваться через template=WEB-INF/view/layouts/default.jspx -->
+    <definition name="default" template="/WEB-INF/view/layouts/default.jspx">
+        <put-attribute name="title" value="MVC"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
+    </definition>
+
+    <!--Orders - HOME PAGE-->
+    <definition name="orders/main" extends="default">
+        <put-attribute name="title" value="Orders"/>
+        <put-attribute name="body" value="/WEB-INF/view/orders/main.jspx"/>
+    </definition>
+    <!--Orders delivery-->
+    <definition name="orders/deliveryOrder" extends="default">
+        <put-attribute name="title" value="Orders"/>
+        <put-attribute name="body" value="/WEB-INF/view/orders/deliveryOrder.jspx"/>
+    </definition>
+    <!--Orders show-->
+    <definition name="orders/showOrder" extends="default">
+        <put-attribute name="title" value="Orders"/>
+        <put-attribute name="body" value="/WEB-INF/view/orders/showOrder.jspx"/>
+    </definition>
+
+    <!--Coffee - main page-->
+    <definition name="coffee/main" extends="default">
+        <put-attribute name="title" value="Coffee"/>
+        <put-attribute name="body" value="/WEB-INF/view/coffee/main.jspx"/>
+    </definition>
+    <!--Coffee - change-->
+    <definition name="coffee/changeCoffee" extends="default">
+        <put-attribute name="title" value="Coffee"/>
+        <put-attribute name="body" value="/WEB-INF/view/coffee/changeCoffee.jspx"/>
+    </definition>
+    <!--Coffee - add-->
+    <definition name="coffee/addCoffee" extends="default">
+        <put-attribute name="title" value="Coffee"/>
+        <put-attribute name="body" value="/WEB-INF/view/coffee/addCoffee.jspx"/>
+    </definition>
+
+    <!--configuration - main page-->
+    <definition name="configuration/main" extends="default">
+        <put-attribute name="title" value="configuration"/>
+        <put-attribute name="body" value="/WEB-INF/view/configuration/main.jspx"/>
+    </definition>
+
+</tiles-definitions>

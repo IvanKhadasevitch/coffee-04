@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:spring="http://www.springframework.org/tags">
+
+<jsp:directive.page pageEncoding="UTF-8" contentType="text/html; UTF-8"/>
+
+    <div class="col-sm-12 tableHeader">
+        <i class="glyphicon glyphicon-thumbs-up"><jsp:text/></i><spring:message code="coffee.title"/>
+    </div>
+    <c:if test="${not empty requestScope.coffeeChangeErrorMsg}">
+        <div class="col-sm-12 error"><spring:message code="coffee.errorMsg"/></div>
+    </c:if>
+
+    <c:set var="coffeeName"><spring:message code="coffee.placeholder.name"/></c:set>
+    <c:set var="coffeePrice"><spring:message code="coffee.placeholder.price"/></c:set>
+    <c:url var="formUrl" value="/coffee/changeCoffee" />
+    <form class="form-horizontal" action="${formUrl}" method="post">
+        <div class="form-group">
+            <c:choose>
+                <c:when test="${sessionScope.coffeeTypeForChange.getDisabled().equals(Character.valueOf('Y'))}">
+                    <label class="control-label col-sm-5" for="disabledChecked"><spring:message code="coffee.disabled"/>? :</label>
+                    <div class="col-sm-4">
+                        <input type="checkbox" id="disabledChecked"  name="disabled" checked="on" />
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <label class="control-label col-sm-5" for="disabled"><spring:message code="coffee.disabled"/>? :</label>
+                    <div class="col-sm-4">
+                        <input type="checkbox" id="disabled" name="disabled" />
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="typeName"><spring:message code="coffee.name"/>:</label>
+            <div class="col-sm-4">
+                <input type="text" required="true" maxlength="200" class="form-control" id="typeName" name="typeName"
+                       placeholder="${coffeeName}"
+                       value="${sessionScope.coffeeTypeForChange.typeName}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-5" for="price"><spring:message code="coffee.price"/>:</label>
+            <div class="col-sm-4">
+                <input type="number" required="true"  class="form-control" id="price" name="price"
+                       placeholder="${coffeePrice}"
+                value="${sessionScope.coffeeTypeForChange.price}"
+                min="0" step="0.01"/>
+            </div>
+        </div>
+        <div class="input-group col-sm-offset-4 col-sm-1">
+            <button type="submit" class="btn btn-success"><spring:message code="coffee.submit"/></button>
+        </div>
+    </form>
+
+</html>
